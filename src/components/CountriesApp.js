@@ -5,8 +5,8 @@ import CountriesContext from '../context/CountriesContext'
 import fetchCountriesAPI from '../hooks/fetchCountriesAPI'
 const CountriesApp = () => {
 
-  const [{ data, error }, fetchCountries] = fetchCountriesAPI()
-  const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
+  const [{ data, error, url }, fetchCountries] = fetchCountriesAPI()
+  const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'World']
 
   return (
     <Fragment>
@@ -14,13 +14,18 @@ const CountriesApp = () => {
         <input
           type="text"
           placeholder="Search..."
-          onChange={e => e.target.value && fetchCountries(`https://restcountries.eu/rest/v2/name/${e.target.value.toLowerCase()}`)} />
+          onChange={e => e.target.value &&
+            fetchCountries(`https://restcountries.eu/rest/v2/name/${e.target.value.toLowerCase()}`)} />
 
         <select
           name="region"
-          onChange={e => fetchCountries(`https://restcountries.eu/rest/v2/region/${e.target.value.toLowerCase()}`)}
+          onChange={e => e.target.value !== 'World'
+            ? fetchCountries(
+              `https://restcountries.eu/rest/v2/region/${e.target.value.toLowerCase()}`)
+            : fetchCountries('https://restcountries.eu/rest/v2/all')
+          }
         >
-          <option defaultValue hidden>Filter by region</option>
+          <option value="World" defaultValue>Filter by region</option>
           {regions.map((region) => (
             <option
               key={region}
@@ -31,7 +36,6 @@ const CountriesApp = () => {
       </form>
       <CountriesList
         countries={data.countries}
-        //isLoading={isLoading}
         error={error}
       />
     </Fragment>
