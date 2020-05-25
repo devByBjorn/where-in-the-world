@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-
+import React from 'react'
 const CountryInfoSquare = ({ flag, name, population, region, capital }) => {
+
   return (
     <div>
       <div><img src={`${flag}`} alt={`Flag of ${name}`} /></div>
