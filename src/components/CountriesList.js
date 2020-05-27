@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import CountryInfoSquare from './CountryInfoSquare'
+import CountrySquare from './CountrySquare'
 
 const CountriesList = ({ countries, error }) => (
   <ul>
@@ -7,7 +7,7 @@ const CountriesList = ({ countries, error }) => (
       ? <p>No country by that name...</p>
       : countries.map(({ flag, name, population, region, capital }) => (
         <li key={name}>
-          <CountryInfoSquare
+          <CountrySquare
             flag={flag}
             name={name}
             population={population}

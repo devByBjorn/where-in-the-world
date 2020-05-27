@@ -19,7 +19,6 @@ const fetchCountriesAPI = () => {
     fetchData()
   }, [url])
 
-
   return [{ data, error, url }, setUrl]
 }
 
