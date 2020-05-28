@@ -5,12 +5,6 @@ const fetchMoreInfo = (name) => {
   const [country, setCountry] = useState('')
   const [error, setError] = useState(false)
 
-  let borders 
-
-  if(country) {
-    
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       setError(false)
@@ -22,7 +16,7 @@ const fetchMoreInfo = (name) => {
       }
     }
     fetchData()
-  }, [])
+  }, [name])
 
   return [country, error]
 }

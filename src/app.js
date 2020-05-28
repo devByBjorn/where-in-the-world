@@ -5,13 +5,13 @@ import 'normalize.css/normalize.css'
 import './style/style.scss'
 import CountriesPage from './components/CountriesPage'
 import CountriesApp from './components/CountriesApp'
-import MoreInfoPage from './components/MoreInfoPage'
+import MoreInfo from './components/MoreInfo'
 
 const App = () => (
   <main>
     <Switch>
       <Route exact path="/" component={CountriesPage} />
-      <Route path="/country/:name" component={MoreInfoPage} />
+      <Route path="/country/:name" component={MoreInfo} />
     </Switch>
   </main>
 )
