@@ -23,14 +23,17 @@ const MoreInfo = () => {
   } = country
 
   const countries = data.countries
-  let borderCountries = []
+
+  let theBorders = []
 
   if (countries && borders) {
-    for (let i = 0; i < countries.length; i++) {
-      countries
-        .filter((country) => country.alpha3Code === borders[i])
-        .map((country) => borderCountries.push(country.name))
-    }
+    borders.forEach((border) =>
+      countries.find((country) =>
+        country.alpha3Code === border
+          ? theBorders.push(country.name)
+          : false
+      )
+    )
   }
 
   return (
@@ -52,9 +55,9 @@ const MoreInfo = () => {
         </ul>
         <div>
           Bordering Countries:
-        {borderCountries.length > 0
+        {theBorders.length > 0
             ? (
-              borderCountries.map((border) => (
+              theBorders.map((border) => (
                 <div key={border}>
                   <Link
                     to={`/country/${border}`}>{border}</Link>

@@ -23,4 +23,3 @@ const useCountriesAPI = () => {
 }
 
 export default useCountriesAPI
-
