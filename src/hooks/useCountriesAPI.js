@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const fetchCountriesAPI = () => {
+const useCountriesAPI = () => {
   const [data, setData] = useState({ countries: [] })
   const [url, setUrl] = useState('https://restcountries.eu/rest/v2/all')
   const [error, setError] = useState(false)
@@ -22,5 +22,5 @@ const fetchCountriesAPI = () => {
   return [{ data, error }, setUrl]
 }
 
-export default fetchCountriesAPI
+export default useCountriesAPI
 

@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useReducer, Fragment } from 'react'
 import CountriesList from './CountriesList'
-import fetchCountriesAPI from '../hooks/fetchCountriesAPI'
+import useCountriesAPI from '../hooks/useCountriesAPI'
 
 const CountriesApp = () => {
-  const [{ data, error }, fetchCountries] = fetchCountriesAPI()
+  const [{ data, error }, fetchCountries] = useCountriesAPI()
   const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'World']
 
   return (
     <Fragment>
+
       <form onSubmit={e => e.preventDefault()}>
         <input
           type="text"
@@ -31,10 +32,12 @@ const CountriesApp = () => {
           ))}
         </select>
       </form>
-      <CountriesList
-        countries={data.countries}
-        error={error}
-      />
+      {data.countries.length > 0
+        ? (<CountriesList
+          countries={data.countries}
+          error={error}
+        />)
+        : (<p>Loading countries...</p>)}
     </Fragment>
   )
 }

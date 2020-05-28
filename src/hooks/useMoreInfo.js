@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const fetchMoreInfo = (name) => {
+const useMoreInfo = (name) => {
   const [country, setCountry] = useState('')
   const [error, setError] = useState(false)
 
@@ -21,4 +21,4 @@ const fetchMoreInfo = (name) => {
   return [country, error]
 }
 
-export default fetchMoreInfo
+export default useMoreInfo
