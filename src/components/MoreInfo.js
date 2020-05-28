@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import fetchMoreInfo from '../hooks/fetchMoreInfo'
 import fetchCountriesAPI from '../hooks/fetchCountriesAPI'
 
-const MoreInfo = () => {
-  const [country, setCountry] = fetchMoreInfo('Belgium')
-  const [{ data, error }, fetchCountries] = fetchCountriesAPI()
+const MoreInfo = ({ currentCountry }) => {
+  const [country] = fetchMoreInfo(currentCountry)
+  const [{ data }] = fetchCountriesAPI()
+
+  console.log(data)
 
   const {
     name,
@@ -19,12 +22,11 @@ const MoreInfo = () => {
     languages,
   } = country
 
-  console.log(borders)
-  console.log(data && borders && data.countries[0])
 
   return (
     country
       ? (<Fragment>
+        <Link to="/">Back</Link>
         <h3>{name}</h3>
         <ul>
           <li>Native name: {nativeName}</li>

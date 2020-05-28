@@ -5,7 +5,7 @@ const CountrySquare = ({ flag, name, population, region, capital }) => (
   <div>
     <div><img src={`${flag}`} alt={`Flag of ${name}`} /></div>
     <div>
-      <h4>{name}</h4>
+      <h4><Link to={`/country/${name}`}>{name}</Link></h4>
       <ul>
         <li>Population: {new Intl.NumberFormat().format(population)}</li>
         <li>Region: {region}</li>
