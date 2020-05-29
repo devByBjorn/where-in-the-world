@@ -19,6 +19,7 @@ const MoreInfo = () => {
     borders,
     currencies,
     languages,
+    flag,
   } = country
 
   const listPrimitives = {
@@ -34,42 +35,21 @@ const MoreInfo = () => {
   const countries = data.countries
   let borderingCountries = []
 
-
   if (countries && borders) {
-    // 1 - 2 millisecond
     countries.forEach((country) =>
       borders.find((border) =>
         border === country.alpha3Code
           ? borderingCountries.push(country.name)
           : false))
-
-    // 1 - 2 millisecond
-    // const t0 = performance.now()
-    // borders.forEach((border) =>
-    //   countries.find((country) =>
-    //     country.alpha3Code === border
-    //       ? borderingCountries.push(country.name)
-    //       : false
-    //   )
-    // )
-    // const t1 = performance.now()
-    // console.log(`loop took ${t1 - t0} milliseconds.`)
-
-    // 9-11 milliseconds
-    // const t0 = performance.now()
-    // for (let i = 0; i < countries.length; i++) {
-    //   countries
-    //     .filter((country) => country.alpha3Code === borders[i])
-    //     .map((country) => borderingCountries.push(country.name))
-    // }
-    // const t1 = performance.now();
-    // console.log(`loop took ${t1 - t0} milliseconds.`)
   }
 
   return (
     country
       ? (<Fragment>
         <Link to="/">Back</Link>
+        <div>
+          <img src={flag} alt={`flag of ${name}`} />
+        </div>
         <h3>{name}</h3>
         <ul>{// This can't possible be more efficient than just typing out each li
           Object.entries(listPrimitives).map((item) =>
@@ -81,10 +61,10 @@ const MoreInfo = () => {
         <ul>
           <li key={"top level domain"}>Top Level Domain: {topLevelDomain}</li>
           <li key={"currencies"}>Currencies:
-          {<span>{currencies.map((currency) => currency.name).join(', ')}</span>}
+          {<span> {currencies.map((currency) => currency.name).join(', ')}</span>}
           </li>
           <li key={"languages"}>Languages:
-          {<span>{languages.map((language) => language.name).join(', ')}</span>}
+          {<span> {languages.map((language) => language.name).join(', ')}</span>}
           </li>
         </ul>
         <div>
