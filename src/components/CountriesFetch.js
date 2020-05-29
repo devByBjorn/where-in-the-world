@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useReducer, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import CountriesList from './CountriesList'
 import useCountriesAPI from '../hooks/useCountriesAPI'
 import FiltersForm from './FiltersForm'
 
-const CountriesApp = () => {
+const CountriesFetch = () => {
   const [{ data, error }, fetchCountries] = useCountriesAPI()
 
   return (
@@ -28,5 +28,5 @@ const CountriesApp = () => {
   )
 }
 
-export default CountriesApp
+export default CountriesFetch
 

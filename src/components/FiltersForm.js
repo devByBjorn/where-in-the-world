@@ -1,8 +1,7 @@
 import React from 'react'
-import useCountriesAPI from '../hooks/useCountriesAPI'
+
 
 const FiltersForm = ({ onChangeInput, onChangeSelect }) => {
-
   const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'World']
 
   return (

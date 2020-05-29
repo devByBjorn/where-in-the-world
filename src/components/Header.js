@@ -1,10 +1,11 @@
 import React from 'react'
+import ToggleTheme from './ToggleTheme'
 
-const Header = () => {
+const Header = ({ toggle, theme }) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: "space-between" }}>
+    <div >
       <h2>Where in the world?</h2>
-      <div>Dark mode</div>
+      <ToggleTheme toggle={toggle} theme={theme} />
     </div>
   )
 }
