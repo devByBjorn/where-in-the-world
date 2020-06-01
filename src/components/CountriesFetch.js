@@ -13,8 +13,8 @@ const CountriesFetch = () => {
           ? fetchCountries(`https://restcountries.eu/rest/v2/name/${e.target.value}`)
           : fetchCountries('https://restcountries.eu/rest/v2/all')
         }
-        onChangeSelect={e => e.target.value !== 'World'
-          ? fetchCountries(`https://restcountries.eu/rest/v2/region/${e.target.value}`)
+        onChangeSelect={e => e.target.innerText !== 'World'
+          ? fetchCountries(`https://restcountries.eu/rest/v2/region/${e.target.innerText}`)
           : fetchCountries('https://restcountries.eu/rest/v2/all')}
       />
 
@@ -30,3 +30,6 @@ const CountriesFetch = () => {
 
 export default CountriesFetch
 
+// e.target.value !== 'World'
+//           ? fetchCountries(`https://restcountries.eu/rest/v2/region/${e.target.value}`)
+//           : fetchCountries('https://restcountries.eu/rest/v2/all')

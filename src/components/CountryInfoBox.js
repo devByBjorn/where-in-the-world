@@ -8,7 +8,7 @@ const LinkStyled = styled(Link)`
 `
 const InfoBox = styled.div`
   border-radius: 2px;
-  box-shadow: 0px 0px 15px 0px ${({ theme }) => theme.boxShadow};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   display: flex;
   height: 35rem;
   flex-direction: column;
