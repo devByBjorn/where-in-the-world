@@ -27,7 +27,8 @@ const FormInput = styled.input`
   border: transparent;
   border-radius: 2px;
   color: ${({ theme }) => theme.text};
-  padding: ${({ theme }) => theme.padding.standardPadding};
+  max-width: 90vw;
+  padding: ${({ theme }) => theme.padding.largePadding};
   -webkit-text-fill-color: ${({ theme }) => theme.text};
   opacity: 1;
   width: 50rem;
@@ -52,7 +53,7 @@ const FormSelect = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${({ theme }) => theme.padding.standardPadding};
+  padding: ${({ theme }) => theme.padding.largePadding};
   width: 17rem;
 
   @media (max-width: 720px) {
