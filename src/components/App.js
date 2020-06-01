@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import { lightTheme, darkTheme } from './Theme'
+import { lightTheme, darkTheme, designTheme } from './Theme'
 import CountriesFetch from './CountriesFetch'
-import MoreInfo from './MoreInfo'
+import CountryMoreInfo from './CountryMoreInfo'
 import Header from './Header'
 import GlobalStyle from './GlobalStyle'
 import useDarkMode from '../hooks/useDarkMode'
@@ -19,17 +19,19 @@ const App = () => {
 
   return (
     <ThemeProvider theme={userTheme}>
-      <GlobalStyle />
-      <Header
-        toggle={toggle}
-        theme={theme}
-      />
-      <main>
-        <Switch>
-          <Route exact path="/" component={CountriesFetch} />
-          <Route path="/country/:name" component={MoreInfo} />
-        </Switch>
-      </main>
+      <ThemeProvider theme={designTheme}>
+        <GlobalStyle />
+        <Header
+          toggle={toggle}
+          theme={theme}
+        />
+        <main>
+          <Switch>
+            <Route exact path="/" component={CountriesFetch} />
+            <Route path="/country/:name" component={CountryMoreInfo} />
+          </Switch>
+        </main>
+      </ThemeProvider>
     </ThemeProvider>
   )
 }

@@ -9,11 +9,10 @@ const useDarkMode = () => {
     setTheme(userTheme)
   }
 
-  const toggle = () => {
+  const toggle = () =>
     theme === 'light'
       ? setUserTheme('dark')
       : setUserTheme('light')
-  }
 
   useEffect(() => {
     const storageTheme = window.localStorage.getItem('theme')
@@ -21,7 +20,6 @@ const useDarkMode = () => {
     window.matchMedia
       && window.matchMedia('(prefers-color-scheme: dark)').matches
       && !storageTheme
-
       ? setUserTheme('dark')
       : storageTheme
         ? setTheme(storageTheme)

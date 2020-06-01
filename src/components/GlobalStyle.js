@@ -2,9 +2,9 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   * {
+    box-sizing: inherit;
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
   }
 
   html {
@@ -13,10 +13,11 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     background: ${({ theme }) => theme.mainBg};
+    box-sizing: border-box;
     color: ${({ theme }) => theme.text};
     font-family: Nunito Sans, Helvetica, Arial, sans-serif;
-    font-size: 1.6rem;
-    box-sizing: border-box;
+    font-size:  ${({ theme }) => theme.typogrophy.standardTypo};
+    font-weight:  ${({ theme }) => theme.fontWeight.standardWeight};
   }
 `
 
