@@ -1,6 +1,6 @@
 
 import { library, icon } from '@fortawesome/fontawesome-svg-core'
-import { faSun, faMoon, faArrowAltCircleDown, faShareSquare } from '@fortawesome/free-regular-svg-icons'
+import { faSun, faMoon, faArrowAltCircleDown, faShareSquare, } from '@fortawesome/free-regular-svg-icons'
 
 library.add(faSun, faMoon)
 

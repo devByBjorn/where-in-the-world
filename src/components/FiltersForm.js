@@ -11,7 +11,7 @@ const FlexForm = styled.form`
   display: flex;
   justify-content: space-between;
   margin: 5rem 0;
-  position:relative;
+  padding-top: ${({ theme }) => theme.padding.standardPadding};
   width: 100%;
 
   @media (max-width: 720px) {
@@ -69,7 +69,7 @@ const FormOptionsWrap = styled.div`
   padding: ${({ theme }) => theme.padding.standardPadding};
   position: absolute;
   left: 0;
-  top: 4.5rem;
+  top: 5.5rem;
   width: 17rem;
   z-index: 999;
 
@@ -103,19 +103,15 @@ const FiltersForm = ({ onChangeInput, onChangeSelect }) => {
 
   return (
     <FlexForm onSubmit={(e) => e.preventDefault()}>
-
       <FormInput
         type="text"
-        placeholder="Search for a country..."
+        placeholder="Search for a country"
         onChange={onChangeInput} />
-
-
-
       <FormSelectContainer>
         <FormSelect
           onClick={displayOptions}
           name="region"
-        > Filter by regions.. <IconFA icon={arrowDown} />
+        > Filter by regions <IconFA icon={arrowDown} />
         </FormSelect>
 
         <FormOptionsWrap style={{ display: options }}>
@@ -128,11 +124,7 @@ const FiltersForm = ({ onChangeInput, onChangeSelect }) => {
           ))}
         </FormOptionsWrap>
       </FormSelectContainer>
-
-
-
     </FlexForm>
-
   )
 }
 

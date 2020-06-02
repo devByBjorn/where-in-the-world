@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import styled, { ThemeProvider } from 'styled-components'
-import { lightTheme, darkTheme, designTheme } from './Theme'
+import { userMode, designTheme } from './Theme'
 import CountriesFetch from './CountriesFetch'
 import CountryMoreInfo from './CountryMoreInfo'
 import Header from './Header'
@@ -15,9 +15,13 @@ const Container = styled.div`
   width: 140rem;
 `
 
+const MainContent = styled.main`
+  margin: 10rem 0;
+`
+
 const App = () => {
   const [theme, toggle, themeDidReload] = useDarkMode()
-  const userTheme = theme === 'light' ? lightTheme : darkTheme
+  const userTheme = theme === 'light' ? userMode.lightTheme : userMode.darkTheme
 
   if (!themeDidReload) {
     return <div />
@@ -27,17 +31,17 @@ const App = () => {
     <ThemeProvider theme={userTheme}>
       <ThemeProvider theme={designTheme}>
         <GlobalStyle />
+        <Header
+          toggle={toggle}
+          theme={theme}
+        />
         <Container>
-          <Header
-            toggle={toggle}
-            theme={theme}
-          />
-          <main>
+          <MainContent>
             <Switch>
               <Route exact path="/" component={CountriesFetch} />
               <Route path="/country/:name" component={CountryMoreInfo} />
             </Switch>
-          </main>
+          </MainContent>
         </Container>
       </ThemeProvider>
     </ThemeProvider>
