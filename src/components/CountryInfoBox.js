@@ -7,7 +7,7 @@ const LinkStyled = styled(Link)`
   text-decoration: none;
 `
 const InfoBox = styled.div`
-  border-radius: 2px;
+  border-radius: 4px;
   box-shadow: ${({ theme }) => theme.boxShadow};
   display: flex;
   height: 35rem;
@@ -18,8 +18,8 @@ const Item = styled.div`
   flex: 1;
 `
 const ImgStyled = styled.img`
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   height: 17.5rem;
   object-fit: cover;
   width: 100%;

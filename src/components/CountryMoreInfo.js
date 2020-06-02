@@ -15,7 +15,7 @@ const MoreInfoContainer = styled.div`
   padding: 2rem 0;
   width: 140rem;
 
-  @media (max-width: 720px) {
+  @media (max-width: 1020px) {
     flex-direction: column;
     max-width: 95vw;
   }
@@ -52,13 +52,14 @@ const Button = styled.div.attrs(props => ({
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.03);
+    background: #ffc600;
   }
 `
 
 const FlagImg = styled.img`
   height: auto;
   width: 100%;
+  max-width: 90vw;
 `
 
 const FactsSection = styled.section`
@@ -66,6 +67,11 @@ const FactsSection = styled.section`
   flex-direction: column;
   height: 100%;
   justify-content: space-around;
+  margin-left: 5rem;
+
+  @media (max-width: 1020px) {
+    margin-left: 0;
+  }
 `
 
 const FactsContainer = styled.div`
@@ -79,14 +85,27 @@ const FactsContent = styled.div`
 const FactsHeading = styled.h3`
   font-size: ${({ theme }) => theme.typogrophy.xlTypo};
   padding-bottom: ${({ theme }) => theme.padding.xlPadding};
+
+  @media (max-width: 1020px) {
+    padding-top: ${({ theme }) => theme.padding.xxlPadding};
+  }
 `
 const FactListsContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1020px) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `
 
 const FactsList = styled.ul`
   list-style-type: none;
+  
+  @media (max-width: 1020px) {
+    padding-bottom: ${({ theme }) => theme.padding.xxlPadding};
+  }
 `
 
 const FactsListItem = styled.li`
@@ -98,12 +117,12 @@ const BoldSpan = styled.span`
   padding-right: ${({ theme }) => theme.padding.smallPadding};
 `
 
-const BorderingContainer = styled.div`
-  displa: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  whidth: 100%,
-  white-space: none;
+const BordersBoldSpan = styled(BoldSpan)`
+@media (max-width: 1020px) {
+  display: block;
+  padding-bottom: ${({ theme }) => theme.padding.standardPadding};
+  margin: 0 2px 2px 2px;
+}
 `
 
 const CountryMoreInfo = () => {
@@ -152,7 +171,7 @@ const CountryMoreInfo = () => {
     <Fragment>
       <Button
         borderRadius="5px"
-        margin="4rem 0"
+        margin="3rem 0"
         width="15rem"
       >
         <LinkStyled
@@ -195,20 +214,21 @@ const CountryMoreInfo = () => {
                 </FactListsContainer>
               </FactsContent>
             </FactsContainer>
-            <BorderingContainer>
-              <BoldSpan>Bordering Countries:</BoldSpan>
+            <div>
+              <BordersBoldSpan>Bordering Countries:</BordersBoldSpan>
               {borderingCountries.length > 0
                 ? (
                   borderingCountries.map((border) => (
                     <Button
+                      key={border}
                       padding="5px 1rem"
                     >
-                      <LinkStyled key={border} to={`/country/${border}`}>{border}</LinkStyled>
+                      <LinkStyled to={`/country/${border}`}>{border}</LinkStyled>
                     </Button>
 
                   )))
                 : (<span> No bordering countries. Could it be an island?</span>)}
-            </BorderingContainer>
+            </div>
           </FactsSection>
 
         </MoreInfoItem>

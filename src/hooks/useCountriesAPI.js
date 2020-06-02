@@ -19,7 +19,7 @@ const useCountriesAPI = () => {
     fetchData()
   }, [url])
 
-  return [{ data, error }, setUrl]
+  return [{ data, error, }, setUrl]
 }
 
 export default useCountriesAPI

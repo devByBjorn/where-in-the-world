@@ -14,6 +14,7 @@ const ButtonMode = styled.button`
 
   span {
     font-weight: ${({ theme }) => theme.fontWeight.largeWeight};
+    letter-spacing: 0.1rem;
     padding-left: ${({ theme }) => theme.padding.standardPadding};
   }
 

@@ -1,8 +1,8 @@
 
 const userMode = {
   lightTheme: {
-    mainBg: 'hsl(0, 0%, 98%)',
-    elementBg: 'hsl(0, 0%, 100%)',
+    mainBg: 'hsl(0, 0%, 97%)',
+    elementBg: 'hsl(0, 0%, 99%)',
     input: 'hsl(0, 0%, 52%)',
     boxShadow: '0px 0px 10px 0px hsl(0, 0%, 82%)',
     text: 'hsl(200, 15%, 8%)',

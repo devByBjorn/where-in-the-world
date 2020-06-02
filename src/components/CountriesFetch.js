@@ -4,7 +4,7 @@ import useCountriesAPI from '../hooks/useCountriesAPI'
 import FiltersForm from './FiltersForm'
 
 const CountriesFetch = () => {
-  const [{ data, error }, fetchCountries] = useCountriesAPI()
+  const [{ data, error, }, fetchCountries] = useCountriesAPI()
 
   return (
     <Fragment>
