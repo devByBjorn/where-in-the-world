@@ -4,14 +4,14 @@ const userMode = {
     mainBg: 'hsl(0, 0%, 98%)',
     elementBg: 'hsl(0, 0%, 100%)',
     input: 'hsl(0, 0%, 52%)',
-    boxShadow: '0px 0px 15px 0px hsl(0, 0%, 62%)',
+    boxShadow: '0px 0px 10px 0px hsl(0, 0%, 82%)',
     text: 'hsl(200, 15%, 8%)',
   },
   darkTheme: {
     mainBg: 'hsl(207, 26%, 17%)',
     elementBg: 'hsl(209, 23%, 22%)',
     input: 'hsl(0, 0%, 98%)',
-    boxShadow: '0px 0px 15px 0px  hsl(200, 15%, 8%)',
+    boxShadow: '0px 0px 10px 0px  hsl(200, 15%, 15%)',
     text: 'hsl(0, 0%, 100%)',
   }
 }

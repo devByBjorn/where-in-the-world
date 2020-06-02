@@ -56,6 +56,10 @@ const FormSelect = styled.div`
   padding: ${({ theme }) => theme.padding.largePadding};
   width: 17rem;
 
+  &:hover {
+    cursor:pointer;
+  }
+
   @media (max-width: 720px) {
     margin-top: 2rem;
   }
