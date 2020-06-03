@@ -17,6 +17,9 @@ const userMode = {
 }
 
 const designTheme = {
+  colors: {
+    standOut: '#ffc600',
+  },
   fontWeight: {
     smallWeight: 200,
     standardWeight: 400,

@@ -1,10 +1,126 @@
 import React, { Fragment } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import useMoreInfo from '../hooks/useMoreInfo'
 import fetchCountriesAPI from '../hooks/useCountriesAPI'
-import IconFA from './IconFA'
 import { arrowLeft } from '../icons/iconsLib'
+import ButtonWithLink from './ButtonWithLink'
+
+const CountryMoreInfo = () => {
+  const param = useParams()
+  const [country] = useMoreInfo(param.name)
+  const [{ data }] = fetchCountriesAPI()
+
+  const { countries } = data
+
+  const {
+    name,
+    nativeName,
+    population,
+    region,
+    subregion,
+    capital,
+    topLevelDomain,
+    borders,
+    currencies,
+    languages,
+    flag,
+  } = country
+
+  const listPrimitives = {
+    nativeName,
+    population: new Intl.NumberFormat().format(population),
+    region,
+    subregion,
+    capital
+  }
+
+  // Find bordering countries full name, borders has 
+  // the same format as the countries alpha3Code.
+  let borderingCountries = []
+
+  if (countries && borders) {
+    countries.forEach((country) =>
+      borders.find((border) =>
+        border === country.alpha3Code
+          ? borderingCountries.push(country.name)
+          : false))
+  }
+
+  return (
+    country &&
+    <Fragment>
+      <ButtonWithLink
+        borderRadius="5px"
+        margin="3rem 0"
+        width="15rem"
+        to="/"
+        icon={arrowLeft}
+        linkText="Back"
+        paddingText="0 0 0 2rem"
+      />
+      <MoreInfoContainer>
+        <MoreInfoItem>
+          <div>
+            <FlagImg src={flag} alt={`flag of ${name}`} />
+          </div>
+        </MoreInfoItem>
+        <MoreInfoItem>
+          <FactsSection>
+            <FactsContainer>
+              <FactsContent>
+                <FactsHeading>{name}</FactsHeading>
+
+                <FactListsContainer>
+                  <List>{
+                    Object.entries(listPrimitives).map((item) =>
+                      item[0] === 'nativeName'
+                        ? (<ListItem key={nativeName}>
+                          <BoldSpan>Native Name:</BoldSpan>{`${item[1]}`}</ListItem>)
+                        : (<ListItem key={item[0]}>
+                          <BoldSpan>
+                            {`${item[0].charAt(0).toUpperCase() + item[0].slice(1)}:`}
+                          </BoldSpan>{`${item[1]}`}</ListItem>)
+                    )
+                  }</List>
+
+                  <List>
+                    <ListItem key={"top level domain"}>
+                      <BoldSpan>Top Level Domain:</BoldSpan>{topLevelDomain}
+                    </ListItem>
+                    <ListItem key={"currencies"}><BoldSpan>Currencies:</BoldSpan>
+                      {currencies.map((currency) => currency.name).join(', ')}
+                    </ListItem>
+                    <ListItem key={"languages"}><BoldSpan>Languages:</BoldSpan>
+                      {languages.map((language) => language.name).join(', ')}
+                    </ListItem>
+                  </List>
+                </FactListsContainer>
+
+              </FactsContent>
+            </FactsContainer>
+            <div>
+              <BordersBoldSpan>Bordering Countries:</BordersBoldSpan>
+              {borderingCountries.length > 0
+                ? (
+                  borderingCountries.map((border) => (
+                    <ButtonWithLink
+                      key={border}
+                      padding="5px 1rem"
+                      to={`/country/${border}`}
+                      linkText={border}
+                    />
+                  )))
+                : (<span> No bordering countries. Could it be an island?</span>)}
+            </div>
+          </FactsSection>
+        </MoreInfoItem>
+      </MoreInfoContainer>
+    </Fragment>
+  )
+}
+
+export default CountryMoreInfo
 
 const MoreInfoContainer = styled.div`
   display: flex;
@@ -23,37 +139,6 @@ const MoreInfoContainer = styled.div`
 const MoreInfoItem = styled.div`
   flex: 1;
   max-width: 65rem;
-`
-
-const LinkStyled = styled(Link)`
-  color: ${({ theme }) => theme.text};
-  display: block;
-  text-decoration: none;
-  width: 100%;
-`
-
-const Button = styled.div.attrs(props => ({
-  borderRadius: props.borderRadius || '2px',
-  margin: props.margin || '5px',
-  padding: props.padding || '1rem',
-  width: props.width || 'auto',
-}))`
-  background: ${({ theme }) => theme.elementBg};
-  border-radius: ${props => props.borderRadius};
-  -moz-box-shadow: ${({ theme }) => theme.boxShadow};
-  -webkit-box-shadow: ${({ theme }) => theme.boxShadow};
-  box-shadow: ${({ theme }) => theme.boxShadow};
-  display: inline-block;
-  margin: ${props => props.margin};
-  padding: ${props => props.padding};
-  text-align: center;
-  transition: all .2s ease;
-  width: ${props => props.width};
-
-  &:hover {
-    cursor: pointer;
-    background: #ffc600;
-  }
 `
 
 const FlagImg = styled.img`
@@ -100,7 +185,7 @@ const FactListsContainer = styled.div`
   }
 `
 
-const FactsList = styled.ul`
+const List = styled.ul`
   list-style-type: none;
   
   @media (max-width: 1020px) {
@@ -108,7 +193,7 @@ const FactsList = styled.ul`
   }
 `
 
-const FactsListItem = styled.li`
+const ListItem = styled.li`
   padding-bottom: ${({ theme }) => theme.padding.smallPadding};
 `
 
@@ -124,119 +209,3 @@ const BordersBoldSpan = styled(BoldSpan)`
   margin: 0 2px 2px 2px;
 }
 `
-
-const CountryMoreInfo = () => {
-  const param = useParams()
-  const [country] = useMoreInfo(param.name)
-  const [{ data }] = fetchCountriesAPI()
-
-  const { countries } = data
-
-  const {
-    name,
-    nativeName,
-    population,
-    region,
-    subregion,
-    capital,
-    topLevelDomain,
-    borders,
-    currencies,
-    languages,
-    flag,
-  } = country
-
-  const listPrimitives = {
-    nativeName,
-    population: new Intl.NumberFormat().format(population),
-    region,
-    subregion,
-    capital
-  }
-
-  // Find bordering countries full name, borders has 
-  // the same format as the countries alpha3Code.
-  let borderingCountries = []
-
-  if (countries && borders) {
-    countries.forEach((country) =>
-      borders.find((border) =>
-        border === country.alpha3Code
-          ? borderingCountries.push(country.name)
-          : false))
-  }
-
-  return (
-    country &&
-    <Fragment>
-      <Button
-        borderRadius="5px"
-        margin="3rem 0"
-        width="15rem"
-      >
-        <LinkStyled
-          to="/">{<IconFA icon={arrowLeft} />} Back</LinkStyled>
-      </Button>
-      <MoreInfoContainer>
-        <MoreInfoItem>
-          <div>
-            <FlagImg src={flag} alt={`flag of ${name}`} />
-          </div>
-        </MoreInfoItem>
-        <MoreInfoItem>
-          <FactsSection>
-            <FactsContainer>
-              <FactsContent>
-                <FactsHeading>{name}</FactsHeading>
-                <FactListsContainer>
-                  <FactsList>{// This can't possible be more efficient than just typing out each li
-                    Object.entries(listPrimitives).map((item) =>
-                      item[0] === 'nativeName'
-                        ? (<FactsListItem key={nativeName}>
-                          <BoldSpan>Native Name:</BoldSpan>{`${item[1]}`}</FactsListItem>)
-                        : (<FactsListItem key={item[0]}>
-                          <BoldSpan>
-                            {`${item[0].charAt(0).toUpperCase() + item[0].slice(1)}:`}
-                          </BoldSpan>{`${item[1]}`}</FactsListItem>)
-                    )
-                  }</FactsList>
-                  <FactsList>
-                    <FactsListItem key={"top level domain"}>
-                      <BoldSpan>Top Level Domain:</BoldSpan>{topLevelDomain}
-                    </FactsListItem>
-                    <FactsListItem key={"currencies"}><BoldSpan>Currencies:</BoldSpan>
-                      {currencies.map((currency) => currency.name).join(', ')}
-                    </FactsListItem>
-                    <FactsListItem key={"languages"}><BoldSpan>Languages:</BoldSpan>
-                      {languages.map((language) => language.name).join(', ')}
-                    </FactsListItem>
-                  </FactsList>
-                </FactListsContainer>
-              </FactsContent>
-            </FactsContainer>
-            <div>
-              <BordersBoldSpan>Bordering Countries:</BordersBoldSpan>
-              {borderingCountries.length > 0
-                ? (
-                  borderingCountries.map((border) => (
-                    <Button
-                      key={border}
-                      padding="5px 1rem"
-                    >
-                      <LinkStyled to={`/country/${border}`}>{border}</LinkStyled>
-                    </Button>
-
-                  )))
-                : (<span> No bordering countries. Could it be an island?</span>)}
-            </div>
-          </FactsSection>
-
-        </MoreInfoItem>
-
-
-      </MoreInfoContainer>
-    </Fragment>
-  )
-}
-
-export default CountryMoreInfo

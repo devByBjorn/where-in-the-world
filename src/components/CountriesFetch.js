@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 import CountriesList from './CountriesList'
 import useCountriesAPI from '../hooks/useCountriesAPI'
 import FiltersForm from './FiltersForm'
+import Spinner from './Spinner'
+
 
 const CountriesFetch = () => {
   const [{ data, error, }, fetchCountries] = useCountriesAPI()
@@ -23,7 +25,7 @@ const CountriesFetch = () => {
           countries={data.countries}
           error={error}
         />)
-        : (<p>Loading countries...</p>)}
+        : (<Spinner />)}
     </Fragment>
   )
 }

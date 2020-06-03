@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import IconFA from './IconFA'
 import { sun, moon } from '../icons/iconsLib'
 
-const ButtonMode = styled.button`
+const ToggleThemeButton = styled.button`
   background: transparent;
   border: none;
   color: ${({ theme }) => theme.text};
@@ -23,7 +23,7 @@ const ButtonMode = styled.button`
       span {
         color: ${({ theme }) => theme.text};
       }
-      color: #ffc600;
+      color: ${({ theme }) => theme.colors.standOut};
       cursor:pointer;
     }
   }
@@ -31,7 +31,7 @@ const ButtonMode = styled.button`
 
 const ToggleTheme = ({ theme, toggle }) => {
   return (
-    <ButtonMode onClick={toggle}>
+    <ToggleThemeButton onClick={toggle}>
       {theme === 'light'
         ? (
           <Fragment>
@@ -47,8 +47,9 @@ const ToggleTheme = ({ theme, toggle }) => {
             /><span>Get light</span>
           </Fragment>
         )}
-    </ButtonMode>
+    </ToggleThemeButton>
   )
 }
 
 export default ToggleTheme
+
