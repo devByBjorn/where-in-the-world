@@ -7,7 +7,11 @@ const Header = ({ toggle, theme }) => {
   return (
     <HeaderContainer>
       <HeaderContentContainer>
-        <Heading><LinkStyled to="/">Where in the world?</LinkStyled></Heading>
+        <Heading>
+          <LinkStyled to="/">
+            Where in the world?
+          </LinkStyled>
+        </Heading>
         <ToggleTheme toggle={toggle} theme={theme} />
       </HeaderContentContainer>
     </HeaderContainer>
@@ -40,6 +44,9 @@ const HeaderContentContainer = styled.div`
 const Heading = styled.h2`
   font-size: ${({ theme }) => theme.typogrophy.xlTypo};
   letter-spacing: .2rem;
+
+  @media (max-width: 500px) {}
+  font-size: ${({ theme }) => theme.typogrophy.standardTypo};
 `
 const LinkStyled = styled(Link)`
   color: ${({ theme }) => theme.text};

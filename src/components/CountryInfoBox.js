@@ -2,6 +2,41 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+const CountryInfoBox = ({
+  flag,
+  name,
+  population,
+  region,
+  capital }) => (
+    <LinkStyled to={`/country/${name}`}>
+      <InfoBox>
+        <Item>
+          <ImgStyled src={`${flag}`} alt={`Flag of ${name}`} />
+        </Item>
+        <Item>
+          <TextWrapper>
+            <HeadingCountry>
+              {name}
+            </HeadingCountry>
+            <List>
+              <ListItem>
+                <ListItemSpan>Population: </ListItemSpan>
+                {new Intl.NumberFormat().format(population)}</ListItem>
+              <ListItem>
+                <ListItemSpan>Region: </ListItemSpan>
+                {region}</ListItem>
+              <ListItem>
+                <ListItemSpan>Capital: </ListItemSpan>
+                {capital}</ListItem>
+            </List>
+          </TextWrapper>
+        </Item>
+      </InfoBox>
+    </LinkStyled>
+  )
+
+export default CountryInfoBox
+
 const LinkStyled = styled(Link)`
   color: ${({ theme }) => theme.text};
   text-decoration: none;
@@ -48,32 +83,4 @@ const ListItemSpan = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.largeWeight};
 `
 
-const CountrySquare = ({ flag, name, population, region, capital }) => (
-  <LinkStyled to={`/country/${name}`}>
-    <InfoBox>
-      <Item>
-        <ImgStyled src={`${flag}`} alt={`Flag of ${name}`} />
-      </Item>
-      <Item>
-        <TextWrapper>
-          <HeadingCountry>
-            {name}
-          </HeadingCountry>
-          <List>
-            <ListItem>
-              <ListItemSpan>Population: </ListItemSpan>
-              {new Intl.NumberFormat().format(population)}</ListItem>
-            <ListItem>
-              <ListItemSpan>Region: </ListItemSpan>
-              {region}</ListItem>
-            <ListItem>
-              <ListItemSpan>Capital: </ListItemSpan>
-              {capital}</ListItem>
-          </List>
-        </TextWrapper>
-      </Item>
-    </InfoBox>
-  </LinkStyled>
-)
 
-export default CountrySquare

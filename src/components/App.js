@@ -7,7 +7,6 @@ import CountryMoreInfo from './CountryMoreInfo'
 import Header from './Header'
 import GlobalStyle from './GlobalStyle'
 import useDarkMode from '../hooks/useDarkMode'
-import '../style/style.scss'
 
 const Container = styled.div`
   margin: 0 auto;

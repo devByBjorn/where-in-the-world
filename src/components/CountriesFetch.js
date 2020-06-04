@@ -7,6 +7,7 @@ import Spinner from './Spinner'
 
 const CountriesFetch = () => {
   const [{ data, error, }, fetchCountries] = useCountriesAPI()
+  const { countries } = data
 
   return (
     <Fragment>
@@ -20,9 +21,9 @@ const CountriesFetch = () => {
           : fetchCountries('https://restcountries.eu/rest/v2/all')}
       />
 
-      {data.countries.length > 0
+      {countries.length > 0
         ? (<CountriesList
-          countries={data.countries}
+          countries={countries}
           error={error}
         />)
         : (<Spinner />)}
