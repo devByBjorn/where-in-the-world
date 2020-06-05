@@ -10,7 +10,7 @@ import {
   ListItemSpan,
   OverLay,
   TextWrapper,
-} from './CountryInfoBoxStyled'
+} from './countryInfoBoxStyled'
 import useMediaQuery from '../hooks/useMediaQuery'
 
 const CountryInfoBox = ({

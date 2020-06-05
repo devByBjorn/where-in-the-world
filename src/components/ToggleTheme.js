@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react'
-import { ToggleThemeButton } from './ToogleThemeStyled'
+import { ToggleThemeButton } from './toogleThemeStyled'
 import ThemeContext from '../contexts/ThemeContext'
 import IconFA from './IconFA'
 import { sun, moon } from '../icons/iconsLib'

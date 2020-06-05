@@ -6,7 +6,7 @@ import {
   FormSelectContainer,
   FormOptionItem,
   FormOptionsWrap,
-} from './FiltersFormStyled'
+} from './filtersFormStyled'
 import IconFA from './IconFA'
 import { arrowDown } from '../icons/iconsLib'
 

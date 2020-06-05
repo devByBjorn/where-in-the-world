@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { GridListContainer, GridListItem } from './CountriesListStyled'
+import { GridListContainer, GridListItem } from './countriesListStyled'
 import useScrollPosition from '../hooks/useScrollPosition'
 import CountryInfoBox from './CountryInfoBox'
 import ScrollUp from './ScrollUp'

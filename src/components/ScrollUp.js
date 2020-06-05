@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonDiv } from './ScrollUpStyled'
+import { ButtonDiv } from './scrollUpStyled'
 import IconFA from './IconFA'
 import { arrowUp } from '../icons/iconsLib'
 
