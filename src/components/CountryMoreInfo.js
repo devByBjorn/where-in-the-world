@@ -13,7 +13,7 @@ import {
   ListItem,
   MoreInfoContainer,
   MoreInfoItem,
-} from './countryMoreInfoStyled'
+} from './CountryMoreInfoStyled'
 import useMoreInfo from '../hooks/useMoreInfo'
 import fetchCountriesAPI from '../hooks/useCountriesAPI'
 import { arrowLeft } from '../icons/iconsLib'

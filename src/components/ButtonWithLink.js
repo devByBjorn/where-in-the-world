@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { DivAsButton, LinkStyled } from './buttonWithLinksStyled'
+import { DivAsButton, LinkStyled } from './ButtonWithLinksStyled'
 import IconFA from './IconFA'
 
 const ButtonWithLink = ({

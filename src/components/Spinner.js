@@ -1,5 +1,5 @@
 import React from 'react'
-import { LdsCircle, LdsCircleDiv } from './spinnerStyled'
+import { LdsCircle, LdsCircleDiv } from './SpinnerStyled'
 
 const Spinner = () => (
   <LdsCircle>

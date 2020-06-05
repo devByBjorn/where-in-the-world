@@ -4,7 +4,7 @@ import {
   HeaderContainer,
   HeaderContentContainer,
   LinkStyled,
-} from './headerStyled'
+} from './HeaderStyled'
 import ToggleTheme from './ToggleTheme'
 
 

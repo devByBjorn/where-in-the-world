@@ -6,13 +6,9 @@ import {
   FormSelectContainer,
   FormOptionItem,
   FormOptionsWrap,
-} from './filtersFormStyled'
+} from './FiltersFormStyled'
 import IconFA from './IconFA'
 import { arrowDown } from '../icons/iconsLib'
-
-//TODO 
-// Fix duplicate CSS 
-// Search icon in placeholder for search input
 
 const FiltersForm = ({ onChangeInput, onChangeSelect }) => {
   const [options, setOptions] = useState('none')
