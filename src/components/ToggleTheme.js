@@ -1,9 +1,12 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { ToggleThemeButton } from './toogleThemeStyled'
+import ThemeContext from '../contexts/ThemeContext'
 import IconFA from './IconFA'
 import { sun, moon } from '../icons/iconsLib'
 
-const ToggleTheme = ({ theme, toggle }) => {
+
+const ToggleTheme = () => {
+  const { theme, toggle } = useContext(ThemeContext)
   return (
     <ToggleThemeButton onClick={toggle}>
       {theme === 'light'

@@ -8,7 +8,7 @@ import {
 import ToggleTheme from './ToggleTheme'
 
 
-const Header = ({ toggle, theme }) => {
+const Header = () => {
   return (
     <HeaderContainer>
       <HeaderContentContainer>
@@ -17,7 +17,7 @@ const Header = ({ toggle, theme }) => {
             Where in the world?
           </LinkStyled>
         </Heading>
-        <ToggleTheme toggle={toggle} theme={theme} />
+        <ToggleTheme />
       </HeaderContentContainer>
     </HeaderContainer>
   )
