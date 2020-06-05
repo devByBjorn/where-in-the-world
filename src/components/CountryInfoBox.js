@@ -1,6 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import {
+  HeadingCountry,
+  ImgStyled,
+  InfoBox,
+  Item,
+  LinkStyled,
+  List,
+  ListItem,
+  ListItemSpan,
+  OverLay,
+  TextWrapper,
+} from './countryInfoBoxStyled'
 import useMediaQuery from '../hooks/useMediaQuery'
 
 const CountryInfoBox = ({
@@ -44,68 +54,5 @@ const CountryInfoBox = ({
 }
 
 export default CountryInfoBox
-
-const OverLay = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 99;
-  transition: background .3s ease;
-  background: ${({ theme }) => theme.overlay};
-  &:hover {
-    background: transparent;
-  }
-`
-
-const LinkStyled = styled(Link)`
-  color: ${({ theme }) => theme.text};
-  display: block;
-  position: relative;
-  text-decoration: none;
-`
-const InfoBox = styled.div`
-  border-radius: 4px;
-  box-shadow: ${({ theme }) => theme.boxShadow};
-  display: flex;
-  height: 35rem;
-  flex-direction: column;
-`
-const Item = styled.div`
-  height: 50%;
-  flex: 1;
-`
-const ImgStyled = styled.img`
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  height: 17.5rem;
-  object-fit: cover;
-  width: 100%;
-`
-const TextWrapper = styled.div`
-  background: ${({ theme }) => theme.elementBg};
-  padding: ${({ theme }) => theme.padding.largePadding};
-`
-const HeadingCountry = styled.h4`
-  font-size: ${({ theme }) => theme.typogrophy.largeTypo};
-  font-weight: ${({ theme }) => theme.fontWeight.xlWeight};
-`
-const List = styled.ul`
-  height: 100%;
-  list-style-type: none;
-  padding-top: ${({ theme }) => theme.padding.largePadding};
-  width: 100%;
-`
-
-const ListItem = styled.li`
-  padding-top: ${({ theme }) => theme.padding.smallPadding};
-  &:first-child {
-    padding-top: 0;
-  }
-`
-const ListItemSpan = styled.span`
-  font-weight: ${({ theme }) => theme.fontWeight.largeWeight};
-`
 
 

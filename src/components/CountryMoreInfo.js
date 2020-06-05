@@ -1,6 +1,19 @@
 import React, { Fragment } from 'react'
 import { useParams } from 'react-router-dom'
-import styled from 'styled-components'
+import {
+  BoldSpan,
+  BordersBoldSpan,
+  FlagImg,
+  FactsSection,
+  FactsContainer,
+  FactsContent,
+  FactsHeading,
+  FactListsContainer,
+  List,
+  ListItem,
+  MoreInfoContainer,
+  MoreInfoItem,
+} from './countryMoreInfoStyled'
 import useMoreInfo from '../hooks/useMoreInfo'
 import fetchCountriesAPI from '../hooks/useCountriesAPI'
 import { arrowLeft } from '../icons/iconsLib'
@@ -122,90 +135,3 @@ const CountryMoreInfo = () => {
 
 export default CountryMoreInfo
 
-const MoreInfoContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem auto;
-  max-height: 120rem; 
-  max-width: 90vw;
-  padding: 2rem 0;
-  width: 140rem;
-
-  @media (max-width: 1020px) {
-    flex-direction: column;
-    max-width: 95vw;
-  }
-`
-const MoreInfoItem = styled.div`
-  flex: 1;
-  max-width: 65rem;
-`
-
-const FlagImg = styled.img`
-  height: auto;
-  width: 100%;
-  max-width: 90vw;
-`
-
-const FactsSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-around;
-  margin-left: 5rem;
-
-  @media (max-width: 1020px) {
-    margin-left: 0;
-  }
-`
-
-const FactsContainer = styled.div`
-  display:flex;
-  justify-content: space-between;
-`
-const FactsContent = styled.div`
-  width: 80%;
-`
-
-const FactsHeading = styled.h3`
-  font-size: ${({ theme }) => theme.typogrophy.xlTypo};
-  padding-bottom: ${({ theme }) => theme.padding.xlPadding};
-
-  @media (max-width: 1020px) {
-    padding-top: ${({ theme }) => theme.padding.xxlPadding};
-  }
-`
-const FactListsContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  @media (max-width: 1020px) {
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-`
-
-const List = styled.ul`
-  list-style-type: none;
-  
-  @media (max-width: 1020px) {
-    padding-bottom: ${({ theme }) => theme.padding.xxlPadding};
-  }
-`
-
-const ListItem = styled.li`
-  padding-bottom: ${({ theme }) => theme.padding.smallPadding};
-`
-
-const BoldSpan = styled.span`
-  font-weight: ${({ theme }) => theme.fontWeight.largeWeight};
-  padding-right: ${({ theme }) => theme.padding.smallPadding};
-`
-
-const BordersBoldSpan = styled(BoldSpan)`
-@media (max-width: 1020px) {
-  display: block;
-  padding-bottom: ${({ theme }) => theme.padding.standardPadding};
-  margin: 0 2px 2px 2px;
-}
-`
