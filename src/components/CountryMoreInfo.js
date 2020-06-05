@@ -52,7 +52,7 @@ const CountryMoreInfo = () => {
     <Fragment>
       <ButtonWithLink
         borderRadius="5px"
-        margin="3rem 0"
+        margin="2rem 0"
         width="15rem"
         to="/"
         icon={arrowLeft}

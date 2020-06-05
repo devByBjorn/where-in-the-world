@@ -1,24 +1,33 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
+import useScrollPosition from '../hooks/useScrollPosition'
 import CountryInfoBox from './CountryInfoBox'
+import ScrollUp from './ScrollUp'
 
-const CountriesList = ({ countries, error }) => (
-  <GridListContainer>
-    {error
-      ? <p>No country by that name...</p>
-      : countries.map(({ flag, name, population, region, capital }) => (
-        <GridListItem key={name}>
-          <CountryInfoBox
-            flag={flag}
-            name={name}
-            population={population}
-            region={region}
-            capital={capital}
-          />
-        </GridListItem>
-      ))}
-  </GridListContainer>
-)
+const CountriesList = ({ countries, error }) => {
+  const scrollPositon = useScrollPosition()
+
+  return (
+    <Fragment>
+      <GridListContainer>
+        {error
+          ? <p>No country by that name...</p>
+          : countries.map(({ flag, name, population, region, capital }) => (
+            <GridListItem key={name}>
+              <CountryInfoBox
+                flag={flag}
+                name={name}
+                population={population}
+                region={region}
+                capital={capital}
+              />
+            </GridListItem>
+          ))}
+      </GridListContainer>
+      {scrollPositon.top > 20 && <ScrollUp />}
+    </Fragment>
+  )
+}
 
 export default CountriesList
 

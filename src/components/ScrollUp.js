@@ -33,8 +33,8 @@ const ButtonDiv = styled.div`
 const ScrollUp = () => {
 
   const navigateOnClick = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
   }
 
   return (
