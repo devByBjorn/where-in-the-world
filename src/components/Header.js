@@ -45,8 +45,9 @@ const Heading = styled.h2`
   font-size: ${({ theme }) => theme.typogrophy.xlTypo};
   letter-spacing: .2rem;
 
-  @media (max-width: 500px) {}
-  font-size: ${({ theme }) => theme.typogrophy.standardTypo};
+  @media (max-width: 500px) {
+    font-size: ${({ theme }) => theme.typogrophy.standardTypo};
+  }
 `
 const LinkStyled = styled(Link)`
   color: ${({ theme }) => theme.text};

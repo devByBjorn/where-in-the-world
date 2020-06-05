@@ -13,15 +13,17 @@ const CountriesList = ({ countries, error }) => {
         {error
           ? <p>No country by that name...</p>
           : countries.map(({ flag, name, population, region, capital }) => (
-            <GridListItem key={name}>
-              <CountryInfoBox
-                flag={flag}
-                name={name}
-                population={population}
-                region={region}
-                capital={capital}
-              />
-            </GridListItem>
+            population > 0
+              ? (<GridListItem key={name}>
+                <CountryInfoBox
+                  flag={flag}
+                  name={name}
+                  population={population}
+                  region={region}
+                  capital={capital}
+                />
+              </GridListItem>)
+              : null
           ))}
       </GridListContainer>
       {scrollPositon.top > 20 && <ScrollUp />}
