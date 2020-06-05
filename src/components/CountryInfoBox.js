@@ -1,14 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import useMediaQuery from '../hooks/useMediaQuery'
 
 const CountryInfoBox = ({
   flag,
   name,
   population,
   region,
-  capital }) => (
+  capital }) => {
+
+  const mediaQuery = useMediaQuery()
+
+  return (
     <LinkStyled to={`/country/${name}`}>
+      {mediaQuery.width > 1025 && <OverLay />}
       <InfoBox>
         <Item>
           <ImgStyled src={`${flag}`} alt={`Flag of ${name}`} />
@@ -35,10 +41,28 @@ const CountryInfoBox = ({
     </LinkStyled>
   )
 
+}
+
 export default CountryInfoBox
+
+const OverLay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  transition: background .3s ease;
+  background: ${({ theme }) => theme.overlay};
+  &:hover {
+    background: transparent;
+  }
+`
 
 const LinkStyled = styled(Link)`
   color: ${({ theme }) => theme.text};
+  display: block;
+  position: relative;
   text-decoration: none;
 `
 const InfoBox = styled.div`
@@ -68,8 +92,10 @@ const HeadingCountry = styled.h4`
   font-weight: ${({ theme }) => theme.fontWeight.xlWeight};
 `
 const List = styled.ul`
+  height: 100%;
   list-style-type: none;
   padding-top: ${({ theme }) => theme.padding.largePadding};
+  width: 100%;
 `
 
 const ListItem = styled.li`
@@ -78,7 +104,6 @@ const ListItem = styled.li`
     padding-top: 0;
   }
 `
-
 const ListItemSpan = styled.span`
   font-weight: ${({ theme }) => theme.fontWeight.largeWeight};
 `

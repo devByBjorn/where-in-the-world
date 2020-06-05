@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import IconFA from './IconFA'
-import { caretUp, arrowUp } from '../icons/iconsLib'
+import { arrowUp } from '../icons/iconsLib'
 
 
 const ButtonDiv = styled.div`
@@ -18,7 +18,7 @@ const ButtonDiv = styled.div`
     margin-left: auto;
     margin-right: auto;
     padding: ${({ theme }) => theme.padding.xlPadding};
-
+    z-index: 999;
     &:hover {
       cursor: pointer;
     }

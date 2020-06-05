@@ -56,6 +56,7 @@ const GridListContainer = styled.ul`
 
 const GridListItem = styled.li`
   background: ${({ theme }) => theme.elementBg};
+  position: relative;
   transition: transform .3s ease-in;
 
   @media (min-width: 1025px) {
@@ -64,3 +65,4 @@ const GridListItem = styled.li`
     }
   }
 `
+
