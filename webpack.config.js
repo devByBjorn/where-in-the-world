@@ -1,4 +1,5 @@
 const path = require('path')
+var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
@@ -32,6 +33,9 @@ module.exports = (env) => {
       },
       ]
     },
+    plugins: [
+      new CaseSensitivePathsPlugin(),
+    ],
     devtool: inProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
