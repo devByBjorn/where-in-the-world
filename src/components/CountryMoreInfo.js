@@ -52,6 +52,7 @@ const CountryMoreInfo = () => {
     <Fragment>
       <ButtonWithLink
         borderRadius="5px"
+        height="5rem"
         margin="3rem 0"
         width="15rem"
         to="/"
@@ -106,7 +107,7 @@ const CountryMoreInfo = () => {
                   borderingCountries.map((border) => (
                     <ButtonWithLink
                       key={border}
-                      padding="5px 1rem"
+                      height="2rem"
                       to={`/country/${border}`}
                       linkText={border}
                     />

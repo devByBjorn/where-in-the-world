@@ -21,6 +21,7 @@ const ButtonWithLink = ({
       width={width}
     >
       <LinkStyled
+        padding={padding}
         to={to}
       >{icon ?
         <Fragment>
@@ -34,9 +35,12 @@ const ButtonWithLink = ({
 
 export default ButtonWithLink
 
-const LinkStyled = styled(Link)`
+const LinkStyled = styled(Link).attrs(props => ({
+  padding: props.padding || '1rem',
+}))`
   color: ${({ theme }) => theme.text};
   display: block;
+  padding: ${props => props.padding};
   text-decoration: none;
   width: 100%;
 `
@@ -44,7 +48,6 @@ const LinkStyled = styled(Link)`
 const DivAsButton = styled.div.attrs(props => ({
   borderRadius: props.borderRadius || '2px',
   margin: props.margin || '5px',
-  padding: props.padding || '1rem',
   width: props.width || 'auto',
 }))`
   background: ${({ theme }) => theme.elementBg};
@@ -54,7 +57,6 @@ const DivAsButton = styled.div.attrs(props => ({
   box-shadow: ${({ theme }) => theme.boxShadow};
   display: inline-block;
   margin: ${props => props.margin};
-  padding: ${props => props.padding};
   text-align: center;
   transition: all .2s ease;
   width: ${props => props.width};
