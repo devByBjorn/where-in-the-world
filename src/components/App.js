@@ -5,6 +5,7 @@ import { userMode, designTheme } from './Theme'
 import CountriesFetch from './CountriesFetch'
 import CountryMoreInfo from './CountryMoreInfo'
 import Header from './Header'
+import ScrollUp from './ScrollUp'
 import GlobalStyle from './GlobalStyle'
 import useDarkMode from '../hooks/useDarkMode'
 
@@ -40,6 +41,7 @@ const App = () => {
               <Route exact path="/" component={CountriesFetch} />
               <Route path="/country/:name" component={CountryMoreInfo} />
             </Switch>
+            <ScrollUp />
           </MainContent>
         </Container>
       </ThemeProvider>

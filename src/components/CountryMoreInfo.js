@@ -52,7 +52,6 @@ const CountryMoreInfo = () => {
     <Fragment>
       <ButtonWithLink
         borderRadius="5px"
-        height="5rem"
         margin="3rem 0"
         width="15rem"
         to="/"
@@ -61,17 +60,18 @@ const CountryMoreInfo = () => {
         paddingText="0 0 0 2rem"
       />
       <MoreInfoContainer>
+
         <MoreInfoItem>
           <div>
             <FlagImg src={flag} alt={`flag of ${name}`} />
           </div>
         </MoreInfoItem>
+
         <MoreInfoItem>
           <FactsSection>
             <FactsContainer>
               <FactsContent>
                 <FactsHeading>{name}</FactsHeading>
-
                 <FactListsContainer>
                   <List>{
                     Object.entries(listPrimitives).map((item) =>
@@ -97,7 +97,6 @@ const CountryMoreInfo = () => {
                     </ListItem>
                   </List>
                 </FactListsContainer>
-
               </FactsContent>
             </FactsContainer>
             <div>
@@ -107,7 +106,7 @@ const CountryMoreInfo = () => {
                   borderingCountries.map((border) => (
                     <ButtonWithLink
                       key={border}
-                      height="2rem"
+                      padding="5px 1rem"
                       to={`/country/${border}`}
                       linkText={border}
                     />
